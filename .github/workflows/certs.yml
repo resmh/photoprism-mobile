@@ -19,11 +19,11 @@ jobs:
       - run: flutter format --dry-run --set-exit-if-changed lib
       - run: flutter packages pub run build_runner build
       - run: flutter analyze --pub
-      - run: flutter test --coverage
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/lcov.info
+      #- run: flutter test --coverage
+      #- uses: codecov/codecov-action@v1
+      #  with:
+      #    token: ${{ secrets.CODECOV_TOKEN }}
+      #    file: ./coverage/lcov.info
       - run: flutter build apk --flavor prod --no-shrink
       - uses: actions/upload-artifact@v1
         with:
