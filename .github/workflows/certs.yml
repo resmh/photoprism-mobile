@@ -15,7 +15,7 @@ jobs:
         with:
           flutter-version: "2.10.x"
           channel: "stable"
-      - run: echo -n ${{ secrets.APKKEY }} | base64 --decode > key.jks
+      - run: echo -n "${{ secrets.APKKEY }}" | base64 --decode > key.jks
       - run: echo "12345678" > key.pass
       - run: flutter pub get
       - run: flutter format --dry-run --set-exit-if-changed lib
