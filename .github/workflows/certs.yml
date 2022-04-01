@@ -15,6 +15,8 @@ jobs:
         with:
           flutter-version: "2.10.x"
           channel: "stable"
+      - run: echo -n ${{ secrets.APKKEY }} | base64 --decode > key.jks
+      - run: echo "12345678" > key.pass
       - run: flutter pub get
       - run: flutter format --dry-run --set-exit-if-changed lib
       - run: flutter packages pub run build_runner build
@@ -29,3 +31,5 @@ jobs:
         with:
           name: photoprism-apk
           path: build/app/outputs/apk/prod/release/
+      - run: rm key.jks
+      - run: rm key.pass
